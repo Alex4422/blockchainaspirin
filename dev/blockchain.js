@@ -1,3 +1,7 @@
+/**
+ *
+ * @constructor
+ */
 function Blockchain() {
 
     /**
@@ -10,3 +14,35 @@ function Blockchain() {
      */
     this.newTransactions = [];
 }
+
+/**
+ *
+ * @param nonce
+ * @param previousBlockHash
+ * @param hash
+ * @returns {{previousBlockHash, index: number, transactions: [], nonce, hash, timestamp: number}}
+ */
+Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash){
+
+    /**
+     *
+     * @type {{previousBlockHash, index: number, transactions: [], nonce, hash, timestamp: number}}
+     */
+    const newBlock = {
+        index: this.chain.length + 1,
+        timestamp: Date.now(),
+        transactions: this.newTransactions,
+        nonce: nonce,
+        hash: hash,
+        previousBlockHash
+    };
+
+    //
+    this.newTransactions = [];
+    this.chain.push(newBlock);
+
+    //
+    return newBlock;
+}
+
+
