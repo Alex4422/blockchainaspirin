@@ -61,4 +61,5 @@ Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash){
     return newBlock;
 }
 
-
+//We need to export the constructor function above in order to test it in test.js
+module.exports = Blockchain;
