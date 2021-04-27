@@ -15,5 +15,6 @@ bitcoin.createNewBlock(11,'gghhjjjk566','tyyhhhh4455');
 bitcoin.createNewBlock(12,'DDFFFF5677GH','DFFFGGG55566');
 bitcoin.createNewBlock(13,'HGGHHHHHYU7','HHGGGG778899');
 
-console.log(bitcoin);
+//console.log(bitcoin);
 
+console.log('The last block of the blockchain is ' + bitcoin.getLastBlock().nonce);

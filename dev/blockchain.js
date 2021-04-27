@@ -61,5 +61,17 @@ Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash){
     return newBlock;
 }
 
+/**
+ * Author: Alex
+ * Element: method
+ * Title: getLastBlock
+ * Description: returns the last block of the blockchain
+ * @returns {*}
+ */
+Blockchain.prototype.getLastBlock = function (){
+    return this.chain[this.chain.length - 1];
+}
+
+
 //We need to export the constructor function above in order to test it in test.js
 module.exports = Blockchain;
