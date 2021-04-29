@@ -17,4 +17,4 @@ bitcoin.createNewBlock(13,'HGGHHHHHYU7','HHGGGG778899');
 
 //console.log(bitcoin);
 
-console.log('The last block of the blockchain is ' + bitcoin.getLastBlock().nonce);
+console.log('The last block nonce of the blockchain is ' + bitcoin.getLastBlock().nonce);
