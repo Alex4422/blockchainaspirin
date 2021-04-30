@@ -15,11 +15,11 @@ function Blockchain() {
     this.chain = [];
     /**
      * Element: variable, array
-     * Title: newTransactions
+     * Title: pendingTransactions
      * Description: Where we will hold all of the new transactions that are created before they are placed into a block
-     * (in mine?)
+     * IMPORTANT: these transactions are not validated yet to be set in stone in the blockchain.
      */
-    this.newTransactions = [];
+    this.pendingTransactions = [];
 }
 
 /**
@@ -46,14 +46,14 @@ Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash){
     const newBlock = {
         index: this.chain.length + 1,
         timestamp: Date.now(),
-        transactions: this.newTransactions,
+        transactions: this.pendingTransactions,
         nonce: nonce,
         hash: hash,
         previousBlockHash: previousBlockHash
     };
 
     //to clear out this entire new transactions array so we can start over for the next block
-    this.newTransactions = [];
+    this.pendingTransactions = [];
     //takes the new block created and pushes it into the chain and adds it to the this.chain above (L.15)
     this.chain.push(newBlock);
 
@@ -72,6 +72,32 @@ Blockchain.prototype.getLastBlock = function (){
     return this.chain[this.chain.length - 1];
 }
 
+/**
+ * Author: Alex
+ * Element: method
+ * Title: createNewTransaction
+ * Description: Create a new transaction and put it the array pendingTransactions
+ * @param amount: the amount (in euros) of aspirins sent by the sender
+ * @param sender: the person who sends the amount to the recipient
+ * @param recipient: the person who receives the amount sent by the sender
+ * @returns {*}
+ */
+Blockchain.prototype.createNewTransaction =  function(amount, sender, recipient){
+
+    //structure of the object newTransaction
+    const newTransaction = {
+        amount: amount,
+        sender: sender,
+        recipient: recipient
+    };
+
+    //the new transaction is put in the new pending transactions array, once done, it's not really set in stone
+    //yet. The transaction is set in stone once the new block is mined or created.
+    this.pendingTransactions.push(newTransaction);
+
+    //return the number of the block that this transaction will be added to
+    return this.getLastBlock()['index'] + 1;
+}
 
 //We need to export the constructor function above in order to test it in test.js
 module.exports = Blockchain;
