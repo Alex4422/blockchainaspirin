@@ -1,3 +1,6 @@
+//We import the library 'sha256' to hash ours blocks with the command "npm i sha256 --save"
+const sha256 = require('sha256');
+
 /**
  * Author: Alex
  * Element: function constructor
@@ -97,6 +100,25 @@ Blockchain.prototype.createNewTransaction =  function(amount, sender, recipient)
 
     //return the number of the block that this transaction will be added to
     return this.getLastBlock()['index'] + 1;
+}
+
+/**
+ * Author: Alex
+ * Element: method
+ * Title: hashBlock
+ * Description: Hash the block with previousBlockHash, currentBlockData, nonce
+ * @param previousBlockHash
+ * @param currentBlockData
+ * @param nonce
+ * @returns {[]|string}
+ */
+Blockchain.prototype.hashBlock = function (previousBlockHash, currentBlockData, nonce) {
+    //We concatenate the 3 parameters of the function
+    const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
+    //We hash the set formed
+    const hash = sha256(dataAsString);
+    //We return the hash formed
+    return hash;
 }
 
 //We need to export the constructor function above in order to test it in test.js
