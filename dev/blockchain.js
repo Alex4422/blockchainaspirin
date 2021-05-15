@@ -125,7 +125,7 @@ Blockchain.prototype.hashBlock = function (previousBlockHash, currentBlockData, 
  * Author: Alex
  * Element: method
  * Title: proofOfWork
- * Description: Computes the needed nonce to get a hash which begins with four 0
+ * Description: Computes the needed nonce to get a hash which begins with four 0. (TO CHECK) -> Returns the correct nonce a.k.a. the correct Proof Of Work
  * @param previousBlockHash
  * @param currentBlockData
  * @returns {number}
@@ -142,6 +142,9 @@ Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData
         nonce++;
         //We hash again with a new once
         hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+
+        //to have a hash calculated
+        console.log('***** The hash calculated is : ***** ' + hash);
     }
 
     //Finally, we return the nonce waited

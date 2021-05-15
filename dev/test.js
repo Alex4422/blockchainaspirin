@@ -66,7 +66,11 @@ const currentBlockData = [
     },
 ];
 //We initialise the nonce parameter
-const nonce = 100;
+//const nonce = 100;
 
 //We execute the hashBlock function to these three parameters
-console.log(bitcoin2.hashBlock(previousBlockHash, currentBlockData, nonce));
+//console.log(bitcoin2.hashBlock(previousBlockHash, currentBlockData, nonce));
+
+//console.log('The nonce calculated waited is : ' + bitcoin2.proofOfWork(previousBlockHash, currentBlockData));
+
+console.log('The hash which begins with four zero is the following : ' + bitcoin2.hashBlock(previousBlockHash, currentBlockData,81441));
