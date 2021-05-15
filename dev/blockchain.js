@@ -121,5 +121,32 @@ Blockchain.prototype.hashBlock = function (previousBlockHash, currentBlockData, 
     return hash;
 }
 
+/**
+ * Author: Alex
+ * Element: method
+ * Title: proofOfWork
+ * Description: Computes the needed nonce to get a hash which begins with four 0
+ * @param previousBlockHash
+ * @param currentBlockData
+ * @returns {number}
+ */
+Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData) {
+    //We use let, here, for nonce because this one will be changing as we move through this method.
+    let nonce = 0;
+    //We use let, here, for hash because this one will be changing as we move through this method.
+    let hash = this.hashBlock(previousBlockHash,currentBlockData, nonce);
+
+    //While the four first figures do not equal with 0, we continue in the while loop
+    while (hash.substring(0,4) !== '0000'){
+        //We test with a new nonce.
+        nonce++;
+        //We hash again with a new once
+        hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+    }
+
+    //Finally, we return the nonce waited
+    return nonce;
+}
+
 //We need to export the constructor function above in order to test it in test.js
 module.exports = Blockchain;
