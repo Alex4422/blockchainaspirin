@@ -23,6 +23,10 @@ function Blockchain() {
      * IMPORTANT: these transactions are not validated yet to be set in stone in the blockchain.
      */
     this.pendingTransactions = [];
+
+    //Generation of the Genesys block inside the Blockchain method with arbitrary values -- don't use arbitrary values in the real world!
+    this.createNewBlock(200,'2','5');
+
 }
 
 /**

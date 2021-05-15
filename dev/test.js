@@ -65,12 +65,20 @@ const currentBlockData = [
         recipient:'SANDYGGGGGTTYYY677888898',
     },
 ];
+
 //We initialise the nonce parameter
 //const nonce = 100;
 
 //We execute the hashBlock function to these three parameters
 //console.log(bitcoin2.hashBlock(previousBlockHash, currentBlockData, nonce));
 
+//To find the correct nonce which will generate a hash with four zero at the beginning.
 //console.log('The nonce calculated waited is : ' + bitcoin2.proofOfWork(previousBlockHash, currentBlockData));
 
+//Find the correct hash with the correct nonce
 console.log('The hash which begins with four zero is the following : ' + bitcoin2.hashBlock(previousBlockHash, currentBlockData,81441));
+
+console.log('The genesys block of the Blockchain is : ');
+
+//Displays the first block of the Blockchain or Genesys block
+console.log(bitcoin2)
